@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html> 
+    <link rel="stylesheet" href="{% static 'myfirst.css' %}">
+    <body> 
+        <h1> Hi, This is Testing 2 for QuerySet </h2>
+        <h1>  1. Using QuerySet .all()  </h1>
+        {{mymembers}}
+        <br>
+        <h1> 2. Using values() for key/value pair </h1>
+        {{mymembers1}}
+        <br>
+        <h1> 3. Using values_list() to return specific column </h1>
+        {{mymembers2}}
+        <br>
+        <h1> 4. Using filter() to return specific row/record </h2>
+         {{mymembers3}}   
+        <br>
+        <table border='1'> 
+            <tr> 
+                <th> Id </th>
+                <th> FName </th>
+                <th> LName </th>
+            </tr>
+            {% for x in mymembers%}
+            <tr> 
+                <td> {{x.id }} </td>
+                <td> {{x.firstname}} </td>
+                <td> {{x.lastname}} </td>
+            </tr>
+            {% endfor %}
+
+            <br>
+            <h1> QuerySet filter </h1>
+            <p> AND,OR,using Q expression,Lookups Keyword </p>
+        </table>
+    </body>
+</html>

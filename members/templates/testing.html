@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="{% static 'myglobal.css' %}">
+    <body>
+        <h1> Hello World! </h1>
+        <p> Welcome to my first Django project </p>
+       
+        <h1> {{Name}} </h1>
+
+        {% with lname="Nagar" %}
+        <h1> {{ lname }} </h1>
+        {% endwith %}
+
+        <br>
+
+        {% if greeting == 1 %}
+        <h3> Hello </h3>
+        {% else %}
+        <h3>Bye</h3>
+        {% endif %}
+
+
+        {% if greet == 2 and day == "friday" or greet == 5 %}
+        <h2> Running </h2>
+        {% endif %}
+
+        {% if 'Banana' in fruits %}
+        <h3> Yes Banana is there </h3>
+        {% endif %}
+        <br>    
+
+        {% for x in fruits %}
+        <h3> {{ forloop.counter }} </h3>
+        <h3> {{ forloop.counter0 }} </h3>
+
+        <h2> {{ x }} </h2>
+
+        <h3> {{ forloop.revcounter }} </h3>
+        <h3> {{ forloop.revcounter0 }} </h3>
+        {% endfor %}
+        {% comment "This is comment" %}
+        {% for x in fruits reversed %}
+        {% if forloop.first %}
+        style='background-color:lightblue;'
+        {% endif %}
+        {% if forloop.last %}
+        style='background-color:lightblue;'
+        {% endif %}
+        <h2> {{ x }} </h2>
+        {%endfor%}
+        {% endcomment %}
+        {% for x in j %}
+        <h2> {{x}} </h2>
+        {% empty %}
+        <h2> Loop is {# empty #} </h2>
+        {%endfor%}
+
+        {% include 'all_members.html' %}
+        {% include 'testing1.html' with me="Hrishabh Nagar" %}
+    </body>
+</html>
